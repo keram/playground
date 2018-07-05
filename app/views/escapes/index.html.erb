@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Escapes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Organiser</th>
+      <th>Prisoner</th>
+      <th>Payload size</th>
+      <th>Escaped at:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @escapes.each do |escape| %>
+      <tr>
+
+        <td><%= escape.organiser %></td>
+        <td><%= escape.prisoner %></td>
+        <td><%= escape.payload.length %></td>
+        <td><%= escape.created_at %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Escape', new_escape_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payload: MyText
+  organiser: MyString
+  success: false
+  ip_address: MyString
+
+two:
+  payload: MyText
+  organiser: MyString
+  success: false
+  ip_address: MyString
