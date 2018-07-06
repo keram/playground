@@ -17,8 +17,7 @@
 
   Something like:
   </p>
-<pre><code class="language-ruby">
-  visit = Visit.new
+<pre><code class="language-ruby">  visit = Visit.new
   prison.unlock(22, 'secret', visit)
 </code></pre>
 
@@ -34,8 +33,7 @@
 
   <h2>The runtime</h2>
 
-<pre><code class="language-ruby">
-prison = PrisonBreak::Prison.new
+<pre><code class="language-ruby">prison = PrisonBreak::Prison.new
 visit = PrisonBreak::Visit.new(prison, payload) # <= your payload goes here
 
 visit.perform if visit.secure?
