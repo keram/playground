@@ -1,5 +1,49 @@
 <h1>New Escape</h1>
 
-<%= render 'form', escape: @escape %>
+<div style="float: right; width: 40%;">
+<h2>Prison blueprints</h2>
 
-<%= link_to 'Back', escapes_path %>
+<pre><code class="language-ruby"><%= File.read(File.join(Rails.root, 'lib', 'prison_break.rb')) %>
+</code></pre>
+</div>
+<div style="width: 40%">
+<h2>
+  The Goal
+</h2>
+
+  <p>
+  <strong>Undetected</strong> unlock prison cell with your favourite prisoner, through visit payload.
+  <br>
+
+  Something like:
+  </p>
+<pre><code class="language-ruby">
+  visit = Visit.new
+  prison.unlock(22, 'secret', visit)
+</code></pre>
+
+<p>
+  only it is more complicated .-)
+</p>
+
+  <h2>Rules</h2>
+
+  <p>
+    Don't hack the web app or server please .-)
+  </p>
+
+  <h2>The runtime</h2>
+
+<pre><code class="language-ruby">
+prison = PrisonBreak::Prison.new
+visit = PrisonBreak::Visit.new(prison, payload) # <= your payload goes here
+
+visit.perform if visit.secure?
+
+success = prison.empty_cell? && visit.free_prisoner.present?
+</code></pre>
+
+  <%= render 'form', escape: @escape %>
+
+  <%= link_to 'Back', escapes_path %>
+</div>
