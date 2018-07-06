@@ -19,9 +19,10 @@
   <% end %>
 
   <% if escape.prisoner.present? %>
-
+  <h4>Congratulations, you did it! Please provide us with your name  to record your achievement.</h4>
   <div class="field">
-    <%= form.label :organiser, 'Your name' %>
+
+    <%= form.label :organiser, 'Your name or Twitter, Github nickname' %>
     <%= form.text_field :organiser %>
   </div>
 
