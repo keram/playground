@@ -1,4 +1,11 @@
 <%= form_with(model: escape, local: true) do |form| %>
+
+  <% if @error_message.present? %>
+    <strong>
+      <%= @error_message %>
+    </strong>
+  <% end %>
+
   <% if escape.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(escape.errors.count, "error") %> prohibited this escape from being saved:</h2>

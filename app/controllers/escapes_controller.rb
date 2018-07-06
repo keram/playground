@@ -26,7 +26,12 @@ class EscapesController < ApplicationController
         if @escape.success?
           format.html { redirect_to action: :edit, id: @escape.id }
         else
-          format.html { redirect_to action: :new, notice: 'Escape failed ;(' }
+          @error_message = @escape.error_message
+          @escape = Escape.new(create_escape_params)
+
+          format.html { render :new }
+
+          # format.html { redirect_to action: :new, notice: 'Escape failed ;(' }
         end
       else
         format.html { render :new }
