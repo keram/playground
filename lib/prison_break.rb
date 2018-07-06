@@ -3,14 +3,18 @@ module PrisonBreak
     attr_accessor :free_prisoner
     attr_reader :prison, :payload
 
+    DISABLED = %w{, ` ( ? ! send eval system exec popen rm puts require new load create file include free call}
+
+    GUARD_RE = Regexp.new(DISABLED.map {|i| Regexp.escape(i) }.join('|'))
+
     def initialize(prison, payload)
       @prison = prison
       @payload = payload
     end
 
     def secure?
-      if !payload.match(/(,|send|eval|free|call|\(|\?)/).nil?
-        raise "Unpermitted item: #{$1}"
+      if !GUARD_RE.match(payload).nil?
+        raise "Unpermitted item: #{Regexp.last_match(0)}"
       end
 
       true
