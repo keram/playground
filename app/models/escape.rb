@@ -19,7 +19,7 @@ class Escape < ApplicationRecord
 
     self.prisoner = visit.free_prisoner
     self.success = prison.empty_cell? && prisoner.present?
-  rescue StandardError => err
+  rescue SyntaxError, StandardError => err
     self.error_message = err.message
   end
 end
