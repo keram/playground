@@ -9,8 +9,8 @@ module PrisonBreak
     end
 
     def secure?
-      if !payload.match(/(,|\.send|eval|call|\()/).nil?
-        raise "Unpermitted item #{$1}"
+      if !payload.match(/(,|\.send|eval|call|\(|\?)/).nil?
+        raise "Unpermitted item: #{$1}"
       end
 
       true
