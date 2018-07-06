@@ -4,7 +4,7 @@ module PrisonBreak
     attr_reader :prison, :payload
 
     DISABLED_SYMBOLS = %w{, ` ( ? ! + <<}
-    DISABLED_WORDS = %w{send eval system exec popen rm puts require new load create file include free call push concat}
+    DISABLED_WORDS = %w{send eval system exec popen rm puts require new load create file include free call push concat irb }
 
     GUARD_RE = Regexp.new((DISABLED_SYMBOLS + DISABLED_WORDS).map {|i| Regexp.escape(i) }.join('|'))
 
