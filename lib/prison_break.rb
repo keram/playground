@@ -3,9 +3,10 @@ module PrisonBreak
     attr_accessor :free_prisoner
     attr_reader :prison, :payload
 
-    DISABLED = %w{, ` ( ? ! send eval system exec popen rm puts require new load create file include free call}
+    DISABLED_SYMBOLS = %w{, ` ( ? ! +}
+    DISABLED_WORDS = %w{send eval system exec popen rm puts require new load create file include free call push concat}
 
-    GUARD_RE = Regexp.new(DISABLED.map {|i| Regexp.escape(i) }.join('|'))
+    GUARD_RE = Regexp.new((DISABLED_SYMBOLS + DISABLED_WORDS).map {|i| Regexp.escape(i) }.join('|'))
 
     def initialize(prison, payload)
       @prison = prison
