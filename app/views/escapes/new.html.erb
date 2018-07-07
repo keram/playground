@@ -38,7 +38,7 @@ visit = PrisonBreak::Visit.new(prison, payload) # <= your payload goes here
 
 visit.perform if visit.secure?
 
-success = prison.empty_cell? && visit.free_prisoner.present?
+success = prison.empty_cell? && !visit.free_prisoner.nil??
 </code></pre>
 
   <%= render 'form', escape: @escape %>
